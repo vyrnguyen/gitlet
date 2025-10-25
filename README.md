@@ -1,2 +1,2 @@
 # gitlet
-A mini version control system that mimics some of basic functionalities of Git.
+A mini version control system that emulates some of Git's basic functionalities.

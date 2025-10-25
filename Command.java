@@ -37,7 +37,7 @@ public class Command {
   public static void init(String[] args) throws IOException {
     GITLET_FOLDER.mkdirs();
     HEAD.createNewFile();
-    Utils.writeContents(HEAD, "master");
+    Utils.writeContents(HEAD, "main");
     Commit.FOLDER.mkdirs();
     Branches.FOLDER.mkdir();
     Stage.FOLDER.mkdirs();
@@ -45,8 +45,8 @@ public class Command {
     Stage.ADD.mkdirs();
     Stage.RM.mkdirs();
     Commit initCommit = new Commit("initial commit", null, null, false);
-    Branches.MASTER.createNewFile();
-    Utils.writeObject(Branches.MASTER, initCommit);
+    Branches.MAIN.createNewFile();
+    Utils.writeObject(Branches.MAIN, initCommit);
     File initFile = Utils.join(Commit.FOLDER, Branches.headId());
     initFile.createNewFile();
     Utils.writeObject(initFile, initCommit);

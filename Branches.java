@@ -21,8 +21,8 @@ public class Branches implements Serializable {
   /** Branch denoting the current/active commit. */
   static final File HEAD = Utils.join(FOLDER, Utils.readContentsAsString(Command.HEAD));
 
-  /** Branch denoting the initial master branch. */
-  static final File MASTER = Utils.join(FOLDER, "master");
+  /** Branch denoting the initial main branch. */
+  static final File MAIN = Utils.join(FOLDER, "main");
 
   /**
    * Returns a String that represents the current head branch's Commit sha1 ID.
