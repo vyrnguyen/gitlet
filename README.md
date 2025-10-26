@@ -48,6 +48,9 @@ directory.
      the current directory, it aborts and prints the error message
      `A Gitlet version-control system already exists in the current directory.`
 
+    - **Runtime**:
+        - Constant relative to any significant measure.
+
 1. **add**
 
    - `java gitlet.Main add [file name]`
@@ -67,6 +70,11 @@ directory.
 
    - If the file doesn't exist, it prints `File does not exist.` and exits
      without changing anything.
+
+    - **Runtime**
+        - In the worst case, runs in linear time relative to the size of the
+        file being added and $lgN$, for $N$ being the number of files in the
+        commit.
 
 1. **commit**
 
@@ -131,6 +139,14 @@ directory.
        changed in the working directory. Just ignore everything outside the .gitlet
        directory entirely.
 
+    - **Runtime**:
+        - Constant with respect to any measure of commits. No worse than linear
+          w/ respect to the total size of files the commit is tracking.
+    - **Space Complexity**:
+        - Committing increases the size of the `.gitlet` directory by no more
+        than the total size of the files staged for addition at the time of
+        commit, not including additional metadata.
+
      > [!IMPORTANT]\
      > **Differences from real git**: In real git, commits may have multiple parents
      > (due to merging) and also have considerably more metadata.
@@ -147,6 +163,9 @@ directory.
    - If the file is neither staged nor tracked by the head commit, print the
      error message `No reason to remove the file.`
 
+    - **Runtime**:
+        - Constant time relative to any significant measure.
+
 1. **log**
 
    - `java gitlet.Main log`
@@ -159,12 +178,18 @@ directory.
      the information it should display is the commit id, the time the commit was
      made, and the commit message.
 
+    - **Runtime**:
+        - Linear with respect to the number of nodes in the head's history.
+
 1. **global-log**
 
    - `java gitlet.Main global-log`
 
    - Like log, except displays information about all commits ever made in an
      unordered fashion.
+
+    - **Runtime**:
+        - Linear relative to the number of commits ever made.
 
 1. **find**
 
@@ -178,6 +203,9 @@ directory.
 
    - If no such commit exists,
      print the error message, `Found no commit with that message.`
+
+    - **Runtime**:
+        - Linear relative to the number of commits.
 
    > [!IMPORTANT]\
    > **Differences from real git**: Doesn't exist in real git. Similar effects can be achieved by grepping
@@ -206,6 +234,11 @@ directory.
        that have been staged for removal, but then re-created without Gitlet's
        knowledge. Ignore any subdirectories that may have been introduced, since
        Gitlet does not deal with them.
+
+   - **Runtime**:
+
+     - Depends only on the amount of data in the working directory plus the
+     number of files staged to be added or deleted plus the number of branches.
 
 1. **checkout**
 
@@ -247,6 +280,13 @@ directory.
        add and commit it first. and exit; perform this check before doing anything
        else.
 
+   - **Runtime**:
+
+     - Linear relative to the size of the file being checked out.
+     - Linear with respect to the total size of the files in the commit's snapshot.
+     - Constant with respect to any measure involving number of commits.
+     - Constant with respect to the number of branches.
+
    > [!IMPORTANT]\
    > **Differences from real git**: Real git does not clear the staging area and
    > stages the file that is checked out. Also, it won't do a checkout that would
@@ -264,16 +304,27 @@ directory.
 
    - If a branch with the given name already exists, it prints the error message, `A branch with that name already exists.`
 
+   - **Runtime**:
+
+     - Should be constant relative to any significant measure.
+
 1. **rm-branch**
 
    - `java gitlet.Main rm-branch [branch name]`
+
    - Deletes the branch with the given name. This only means to delete the
      pointer associated with the branch; it does not mean to delete all commits
      that were created under the branch.
+
    - If a branch with the given name does not exist, then abort and print the error
      message `A branch with that name does not exist.`
+
    - If you try to remove the
      branch you're currently on, abort, and print the error message `Cannot remove the current branch.`
+
+   - **Runtime**:
+
+     - Should be constant relative to any significant measure.
 
 1. **reset**
 
@@ -292,6 +343,12 @@ directory.
      by the reset, print `There is an untracked file in the way; delete it, or add and commit it first.`
      and exit; perform this check before doing anything else.
 
+   - **Runtime**:
+
+     - Linear with respect to the total size of files tracked by the
+       given commit's snapshot. Constant with respect to any measure
+       involving number of commits.
+
    > [!IMPORTANT]\
    > **Differences from real git**: This command is closest to using the --hard
    > option, as in git reset --hard [commit hash].
@@ -301,10 +358,6 @@ directory.
    - `java gitlet.Main merge [branch name]`
 
    - Merges files from the given branch into the current branch.
-
-   - $O(N lg N + D)$, where $N$ is the total number of ancestor commits for the two
-     branches and $D$ is the total amount of data in all the files under these
-     commits.
 
    - If there are staged additions or removals present, print the
      error message `You have uncommitted changes.` and exit.
@@ -322,6 +375,12 @@ directory.
    - If an untracked file in the current
      commit would be overwritten or deleted by the merge, print `There is an untracked file in the way; delete it, or add and commit it first.` and exit;
      perform this check before doing anything else.
+
+   - **Runtime**:
+
+     - $O(N lg N + D)$, where $N$ is the total number of ancestor commits for the two
+       branches and $D$ is the total amount of data in all the files under these
+       commits.
 
    > [!IMPORTANT]\
    > **Differences from real git**:
