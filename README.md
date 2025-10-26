@@ -338,3 +338,7 @@ directory.
 > - Real Git will complain if there are unstaged
 >   changes to a file that would be changed by a merge. You may do so as well if
 >   you want, but we will not test that case.
+
+# Deletion
+
+Simply remove the `.gitlet` folder from the directory that you initialized it in.
