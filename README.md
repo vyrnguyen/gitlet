@@ -48,8 +48,9 @@ directory.
      the current directory, it aborts and prints the error message
      `A Gitlet version-control system already exists in the current directory.`
 
-    - **Runtime**:
-        - Constant relative to any significant measure.
+   - **Runtime**:
+
+     - Constant relative to any significant measure.
 
 1. **add**
 
@@ -71,10 +72,11 @@ directory.
    - If the file doesn't exist, it prints `File does not exist.` and exits
      without changing anything.
 
-    - **Runtime**
-        - In the worst case, runs in linear time relative to the size of the
-        file being added and $lgN$, for $N$ being the number of files in the
-        commit.
+   - **Runtime**
+
+     - In the worst case, runs in linear time relative to the size of the
+       file being added and $lgN$, for $N$ being the number of files in the
+       commit.
 
 1. **commit**
 
@@ -139,17 +141,20 @@ directory.
        changed in the working directory. Just ignore everything outside the .gitlet
        directory entirely.
 
-    - **Runtime**:
-        - Constant with respect to any measure of commits. No worse than linear
-          w/ respect to the total size of files the commit is tracking.
-    - **Space Complexity**:
-        - Committing increases the size of the `.gitlet` directory by no more
-        than the total size of the files staged for addition at the time of
-        commit, not including additional metadata.
+   - **Runtime**:
 
-     > [!IMPORTANT]\
-     > **Differences from real git**: In real git, commits may have multiple parents
-     > (due to merging) and also have considerably more metadata.
+     - Constant with respect to any measure of commits. No worse than linear
+       w/ respect to the total size of files the commit is tracking.
+
+   - **Space Complexity**:
+
+     - Committing increases the size of the `.gitlet` directory by no more
+       than the total size of the files staged for addition at the time of
+       commit, not including additional metadata.
+
+   > [!IMPORTANT]\
+   > **Differences from real git**: In real git, commits may have multiple parents
+   > (due to merging) and also have considerably more metadata.
 
 1. **rm**
 
@@ -163,8 +168,9 @@ directory.
    - If the file is neither staged nor tracked by the head commit, print the
      error message `No reason to remove the file.`
 
-    - **Runtime**:
-        - Constant time relative to any significant measure.
+   - **Runtime**:
+
+     - Constant time relative to any significant measure.
 
 1. **log**
 
@@ -178,8 +184,9 @@ directory.
      the information it should display is the commit id, the time the commit was
      made, and the commit message.
 
-    - **Runtime**:
-        - Linear with respect to the number of nodes in the head's history.
+   - **Runtime**:
+
+     - Linear with respect to the number of nodes in the head's history.
 
 1. **global-log**
 
@@ -188,8 +195,9 @@ directory.
    - Like log, except displays information about all commits ever made in an
      unordered fashion.
 
-    - **Runtime**:
-        - Linear relative to the number of commits ever made.
+   - **Runtime**:
+
+     - Linear relative to the number of commits ever made.
 
 1. **find**
 
@@ -204,8 +212,9 @@ directory.
    - If no such commit exists,
      print the error message, `Found no commit with that message.`
 
-    - **Runtime**:
-        - Linear relative to the number of commits.
+   - **Runtime**:
+
+     - Linear relative to the number of commits.
 
    > [!IMPORTANT]\
    > **Differences from real git**: Doesn't exist in real git. Similar effects can be achieved by grepping
@@ -238,7 +247,7 @@ directory.
    - **Runtime**:
 
      - Depends only on the amount of data in the working directory plus the
-     number of files staged to be added or deleted plus the number of branches.
+       number of files staged to be added or deleted plus the number of branches.
 
 1. **checkout**
 
@@ -395,5 +404,8 @@ directory.
    >   just commits the merge, conflicts and all, so that you must use a separate
    >   commit to resolve problems.
    > - Real Git will complain if there are unstaged
-   >   changes to a file that would be changed by a merge. You may do so as well if
-   >   you want, but we will not test that case.
+   >   changes to a file that would be changed by a merge.
+
+# Deletion
+
+Simply remove the `.gitlet` folder from the directory that you initialized it in.
