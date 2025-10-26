@@ -52,7 +52,7 @@ directory.
 
      - Constant relative to any significant measure.
 
-1. **add**
+2. **add**
 
    - `java gitlet.Main add [file name]`
 
@@ -78,7 +78,7 @@ directory.
        file being added and $lgN$, for $N$ being the number of files in the
        commit.
 
-1. **commit**
+3. **commit**
 
    - `java gitlet.Main commit [message]`
 
@@ -156,7 +156,7 @@ directory.
 > **Differences from real git**: In real git, commits may have multiple parents
 > (due to merging) and also have considerably more metadata.
 
-1. **rm**
+4. **rm**
 
    - `java gitlet.Main rm [file name]`
 
@@ -172,7 +172,7 @@ directory.
 
      - Constant time relative to any significant measure.
 
-1. **log**
+5. **log**
 
    - `java gitlet.Main log`
 
@@ -188,7 +188,7 @@ directory.
 
      - Linear with respect to the number of nodes in the head's history.
 
-1. **global-log**
+6. **global-log**
 
    - `java gitlet.Main global-log`
 
@@ -199,7 +199,7 @@ directory.
 
      - Linear relative to the number of commits ever made.
 
-1. **find**
+7. **find**
 
    - `java.gitletMain find [commit message]`
 
@@ -220,7 +220,7 @@ directory.
 > **Differences from real git**: Doesn't exist in real git. Similar effects can be achieved by grepping
 > the output of log.
 
-1. **status**
+8. **status**
 
    - `java gitlet.Main status`
 
@@ -249,7 +249,7 @@ directory.
      - Depends only on the amount of data in the working directory plus the
        number of files staged to be added or deleted plus the number of branches.
 
-1. **checkout**
+9. **checkout**
 
    - `java gitlet.Main checkout -- [file name]`
 
@@ -301,7 +301,7 @@ directory.
 > stages the file that is checked out. Also, it won't do a checkout that would
 > overwrite or undo changes (additions or removals) that you have staged.
 
-1. **branch**
+10. **branch**
 
    - `java gitlet.Main branch [branch name]`
 
@@ -317,7 +317,7 @@ directory.
 
      - Should be constant relative to any significant measure.
 
-1. **rm-branch**
+11. **rm-branch**
 
    - `java gitlet.Main rm-branch [branch name]`
 
@@ -335,7 +335,7 @@ directory.
 
      - Should be constant relative to any significant measure.
 
-1. **reset**
+12. **reset**
 
    - `java gitlet.Main reset [commit id]`
 
@@ -362,7 +362,7 @@ directory.
 > **Differences from real git**: This command is closest to using the --hard
 > option, as in git reset --hard [commit hash].
 
-1. **merge**
+13. **merge**
 
    - `java gitlet.Main merge [branch name]`
 
