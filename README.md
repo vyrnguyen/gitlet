@@ -130,10 +130,10 @@ directory.
        not a failure for tracked files to be missing from the working directory or
        changed in the working directory. Just ignore everything outside the .gitlet
        directory entirely.
-
-     > [!IMPORTANT]\
-     > **Differences from real git**: In real git, commits may have multiple parents
-     > (due to merging) and also have considerably more metadata.
+> [!IMPORTANT]  
+> **Differences from real git**:
+> In real git, commits may have multiple parents
+> (due to merging) and also have considerably more metadata.
 
 1. **rm**
 
@@ -179,9 +179,10 @@ directory.
    - If no such commit exists,
      print the error message, `Found no commit with that message.`
 
-   > [!IMPORTANT]\
-   > **Differences from real git**: Doesn't exist in real git. Similar effects can be achieved by grepping
-   > the output of log.
+> [!IMPORTANT]  
+> **Differences from real git**:
+> Doesn't exist in real git. Similar effects can be achieved by grepping
+> the output of log.
 
 1. **status**
 
@@ -247,10 +248,10 @@ directory.
        add and commit it first. and exit; perform this check before doing anything
        else.
 
-   > [!IMPORTANT]\
-   > **Differences from real git**: Real git does not clear the staging area and
-   > stages the file that is checked out. Also, it won't do a checkout that would
-   > overwrite or undo changes (additions or removals) that you have staged.
+> [!IMPORTANT]  
+> **Differences from real git**: Real git does not clear the staging area and
+> stages the file that is checked out. Also, it won't do a checkout that would
+> overwrite or undo changes (additions or removals) that you have staged.
 
 1. **branch**
 
@@ -292,9 +293,9 @@ directory.
      by the reset, print `There is an untracked file in the way; delete it, or add and commit it first.`
      and exit; perform this check before doing anything else.
 
-   > [!IMPORTANT]\
-   > **Differences from real git**: This command is closest to using the --hard
-   > option, as in git reset --hard [commit hash].
+> [!IMPORTANT]  
+> **Differences from real git**: This command is closest to using the --hard
+> option, as in git reset --hard [commit hash].
 
 1. **merge**
 
@@ -322,19 +323,18 @@ directory.
    - If an untracked file in the current
      commit would be overwritten or deleted by the merge, print `There is an untracked file in the way; delete it, or add and commit it first.` and exit;
      perform this check before doing anything else.
-
-   > [!IMPORTANT]\
-   > **Differences from real git**:
-   >
-   > - Real Git does a more subtle job of merging
-   >   files, displaying conflicts only in places where both files have changed
-   >   since the split point.
-   > - Real Git has a different way to decide which of
-   >   multiple possible split points to use.
-   > - Real Git will force the user to
-   >   resolve the merge conflicts before committing to complete the merge. Gitlet
-   >   just commits the merge, conflicts and all, so that you must use a separate
-   >   commit to resolve problems.
-   > - Real Git will complain if there are unstaged
-   >   changes to a file that would be changed by a merge. You may do so as well if
-   >   you want, but we will not test that case.
+     
+> [!IMPORTANT]  
+> **Differences from real git**:
+> - Real Git does a more subtle job of merging
+>   files, displaying conflicts only in places where both files have changed
+>   since the split point.
+> - Real Git has a different way to decide which of
+>   multiple possible split points to use.
+> - Real Git will force the user to
+>   resolve the merge conflicts before committing to complete the merge. Gitlet
+>   just commits the merge, conflicts and all, so that you must use a separate
+>   commit to resolve problems.
+> - Real Git will complain if there are unstaged
+>   changes to a file that would be changed by a merge. You may do so as well if
+>   you want, but we will not test that case.
